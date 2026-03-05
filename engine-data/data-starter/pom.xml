@@ -3,18 +3,14 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.ark</groupId>
-        <artifactId>ark-engine</artifactId>
+        <artifactId>engine-data</artifactId>
         <version>${revision}</version>
     </parent>
 
-    <artifactId>engine-data</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>data-starter</artifactId>
+    <packaging>jar</packaging>
 
-    <name>engine-data</name>
-    <modules>
-        <module>data-core</module>
-        <module>data-starter</module>
-    </modules>
+    <name>data-starter</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
