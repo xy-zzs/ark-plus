@@ -21,6 +21,16 @@
         <dependencies>
             <dependency>
                 <groupId>io.ark</groupId>
+                <artifactId>user-domain</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.ark</groupId>
+                <artifactId>engine-core</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.ark</groupId>
                 <artifactId>security-satoken</artifactId>
                 <version>${revision}</version>
             </dependency>
