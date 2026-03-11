@@ -36,16 +36,6 @@
             </dependency>
             <dependency>
                 <groupId>io.ark</groupId>
-                <artifactId>security-sas</artifactId>
-                <version>${revision}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.ark</groupId>
-                <artifactId>security-satoken</artifactId>
-                <version>${revision}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.ark</groupId>
                 <artifactId>security-starter</artifactId>
                 <version>${revision}</version>
             </dependency>

@@ -12,8 +12,6 @@
 
     <name>engine-security</name>
     <modules>
-        <module>security-sas</module>
-        <module>security-satoken</module>
         <module>security-core</module>
         <module>security-starter</module>
     </modules>
