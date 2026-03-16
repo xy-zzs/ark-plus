@@ -1,0 +1,55 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>io.ark</groupId>
+        <artifactId>engine-data</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <artifactId>data-mp</artifactId>
+    <packaging>jar</packaging>
+
+    <name>data-mp</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.ark</groupId>
+            <artifactId>security-core</artifactId>
+        </dependency>
+        <!-- 上层抽象 -->
+        <dependency>
+            <groupId>io.ark</groupId>
+            <artifactId>data-core</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <!-- MP Spring Boot 3 Starter（已含 mybatis-spring-boot-starter，勿重复引入） -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
+        </dependency>
+
+        <!-- 分页/条件构造器依赖的 SQL 解析器，JDK17+ 必须显式引入 -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-jsqlparser</artifactId>
+        </dependency>
+
+        <!-- Spring Context（@Configuration、@Component 等注解来源） -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+</project>

@@ -14,6 +14,7 @@
     <modules>
         <module>data-core</module>
         <module>data-starter</module>
+        <module>data-mp</module>
     </modules>
 
     <properties>
