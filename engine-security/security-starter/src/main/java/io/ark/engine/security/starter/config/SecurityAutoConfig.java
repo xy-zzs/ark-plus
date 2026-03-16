@@ -8,7 +8,6 @@ import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.boot.security.autoconfigure.web.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -51,7 +50,7 @@ public class SecurityAutoConfig {
                                                   TokenAuthFilter tokenAuthFilter,
                                                   SecurityProperties securityProperties,
                                                   SecurityAuthEntryPoint authEntryPoint,
-                                                  SecurityAccessDeniedHandler accessDeniedHandler){
+                                                  SecurityAccessDeniedHandler accessDeniedHandler) throws Exception {
         // 白名单路径转数组
         String[] ignoreUrls = securityProperties.getIgnoreUrls().toArray(String[]::new);
         return httpSecurity
