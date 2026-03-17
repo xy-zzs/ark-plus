@@ -13,5 +13,5 @@ package io.ark.engine.web.core.exception;
  */
 public interface IErrorCode {
     int getCode();
-    String getMessage();
+    String getMessageKey();
 }

@@ -33,18 +33,18 @@ public class Result<T> {
 
     public static <T> Result<T> ok(T data) {
         return new Result<>(GlobalErrorCode.SUCCESS.getCode(),
-                GlobalErrorCode.SUCCESS.getMessage(), data);
+                GlobalErrorCode.SUCCESS.getMessageKey(), data);
     }
 
     public static Result<Void> ok() {
         return new Result<>(GlobalErrorCode.SUCCESS.getCode(),
-                GlobalErrorCode.SUCCESS.getMessage(), null);
+                GlobalErrorCode.SUCCESS.getMessageKey(), null);
     }
 
     // ─── 失败 ──────────────────────────────────────────────────────────────
 
     public static <T> Result<T> fail(IErrorCode errorCode) {
-        return new Result<>(errorCode.getCode(), errorCode.getMessage(), null);
+        return new Result<>(errorCode.getCode(), errorCode.getMessageKey(), null);
     }
 
     public static <T> Result<T> fail(int code, String message) {

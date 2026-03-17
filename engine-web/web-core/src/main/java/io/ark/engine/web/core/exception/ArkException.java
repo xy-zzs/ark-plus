@@ -22,22 +22,34 @@ import lombok.Getter;
 public class ArkException extends RuntimeException{
 
     private final int code;
+    /**
+     * i18n 消息键，由 GlobalExceptionHandler 负责翻译
+     * 存原始 key 而非翻译结果，原因：异常构造时可能还没有 locale 上下文
+     */
+    private final String messageKey;
 
-    public ArkException(IErrorCode errorCode) {
-        super(errorCode.getMessage());
+    /**
+     * 支持消息占位符参数，如 "user.not.found.with.name" = "用户 {0} 不存在"
+     * throw new UserException(UserErrorCode.USER_NOT_FOUND, username)
+     */
+    private final Object[] args;
+
+    public ArkException(IErrorCode errorCode, Object... args) {
+        // super message 存 key，方便日志直接看到 key
+        super(errorCode.getMessageKey());
         this.code = errorCode.getCode();
+        this.messageKey = errorCode.getMessageKey();
+        this.args = args;
     }
 
-    public ArkException(int code, String  message) {
-        super(message);
+    public ArkException(int code, String messageKey, Object... args) {
+        super(messageKey);
         this.code = code;
+        this.messageKey = messageKey;
+        this.args = args;
     }
 
-    /** 快速抛出通用业务异常（无需定义具体异常类） */
-    public static ArkException of(int code, String message) {
-        return new ArkException(code, message);
-    }
-    public static ArkException of(IErrorCode errorCode) {
-        return new ArkException(errorCode);
+    public static ArkException of(IErrorCode errorCode, Object... args) {
+        return new ArkException(errorCode, args);
     }
 }

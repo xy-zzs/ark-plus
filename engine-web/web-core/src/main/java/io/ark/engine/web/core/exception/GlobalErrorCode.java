@@ -11,21 +11,21 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum GlobalErrorCode implements IErrorCode{
     // ─── 成功 ──────────────────────────────────────────────────────────────
-    SUCCESS(200, "成功"),
+    SUCCESS(200,             "global.success"),
 
     // ─── 客户端错误 4xx ────────────────────────────────────────────────────
-    BAD_REQUEST(400, "请求参数错误"),
-    UNAUTHORIZED(401, "未登录或 token 已过期"),
-    FORBIDDEN(403, "无权限访问"),
-    NOT_FOUND(404, "资源不存在"),
-    METHOD_NOT_ALLOWED(405, "请求方法不支持"),
+    BAD_REQUEST(400,         "global.bad.request"),
+    UNAUTHORIZED(401,        "global.unauthorized"),
+    FORBIDDEN(403,           "global.forbidden"),
+    NOT_FOUND(404,           "global.not.found"),
+    METHOD_NOT_ALLOWED(405,  "global.method.not.allowed"),
 
     // ─── 业务错误 —— 统一用 4200 段，避免和 HTTP 状态码混淆 ────────────────
-    BIZ_ERROR(4200, "业务异常"),
+    BIZ_ERROR(4200,          "global.biz.error"),
 
     // ─── 服务端错误 5xx ────────────────────────────────────────────────────
-    INTERNAL_ERROR(500, "服务器内部错误");
+    INTERNAL_ERROR(500,      "global.internal.error");
 
     private final int code;
-    private final String message;
+    private final String messageKey;
 }
