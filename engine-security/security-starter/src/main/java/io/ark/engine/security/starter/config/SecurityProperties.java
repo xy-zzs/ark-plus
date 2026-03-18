@@ -21,6 +21,7 @@ public class SecurityProperties {
     private List<String> ignoreUrls = new ArrayList<>(List.of(
             "/api/auth/login",
             "/api/auth/refresh",
+            "/api/v1/auth/**",
             "/actuator/**",
             "/v3/api-docs/**",
             "/swagger-ui/**",

@@ -8,7 +8,7 @@
     </parent>
 
     <artifactId>ark-framework</artifactId>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
 
     <name>ark-framework</name>
     <description>ark框架</description>
