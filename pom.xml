@@ -16,6 +16,7 @@
     <module>ark-framework</module>
     <module>engine-web</module>
     <module>engine-core</module>
+      <module>engine-cache</module>
   </modules>
 
   <properties>

@@ -1,0 +1,26 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>io.ark</groupId>
+        <artifactId>engine-cache</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <artifactId>cache-starter</artifactId>
+    <packaging>jar</packaging>
+
+    <name>ache-starter</name>
+    <description>缓存自动装配，按配置项决定激活哪种缓存实现</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.ark</groupId>
+            <artifactId>cache-redis</artifactId>
+        </dependency>
+    </dependencies>
+</project>
