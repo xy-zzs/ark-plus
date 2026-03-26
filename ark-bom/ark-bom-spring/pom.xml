@@ -106,10 +106,23 @@
         </dependencies>
     </dependencyManagement>
 
+
     <!-- ark-bom-spring/pom.xml 加 build -->
     <build>
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <!-- 3.13+ 才完整支持 <parameters> 和 JDK 17/21 -->
+                    <version>3.13.0</version>
+                    <configuration>
+                        <source>${jdk.version}</source>
+                        <target>${jdk.version}</target>
+                        <parameters>true</parameters>
+                    </configuration>
+                </plugin>
+
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
