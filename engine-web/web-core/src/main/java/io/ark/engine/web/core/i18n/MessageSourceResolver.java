@@ -1,4 +1,4 @@
-package io.ark.engine.core.i18n;
+package io.ark.engine.web.core.i18n;
 
 import io.ark.framework.i18n.MessageResolver;
 import org.springframework.context.MessageSource;

@@ -1,6 +1,7 @@
 package io.ark.engine.web.core.result;
 
 import io.ark.engine.web.core.exception.WebErrorCode;
+import io.ark.engine.web.core.i18n.MessageSourceHolder;
 import io.ark.framework.exception.IErrorCode;
 import lombok.Getter;
 
@@ -32,8 +33,8 @@ public class Result<T> {
     // ─── 成功 ──────────────────────────────────────────────────────────────
 
     public static <T> Result<T> ok(T data) {
-        return new Result<>(WebErrorCode.SUCCESS.getCode(),
-                WebErrorCode.SUCCESS.getMessageKey(), data);
+        String message1 = MessageSourceHolder.getMessage(WebErrorCode.SUCCESS.getMessageKey());
+        return new Result<>(WebErrorCode.SUCCESS.getCode(),message1, data);
     }
 
     public static Result<Void> ok() {

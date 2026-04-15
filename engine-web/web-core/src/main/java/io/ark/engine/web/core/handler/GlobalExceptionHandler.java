@@ -1,8 +1,8 @@
 package io.ark.engine.web.core.handler;
 
-import io.ark.engine.core.i18n.MessageSourceHolder;
 import io.ark.engine.web.core.exception.WebArkException;
 import io.ark.engine.web.core.exception.WebErrorCode;
+import io.ark.engine.web.core.i18n.MessageSourceHolder;
 import io.ark.engine.web.core.result.Result;
 import io.ark.framework.exception.BizException;
 import lombok.RequiredArgsConstructor;
@@ -56,7 +56,8 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(BizException.class)
     public Result<Void> handleArkException(BizException ex) {
         // 翻译：用异常携带的 key + args，结合当前请求 locale
-        String message = MessageSourceHolder.getMessage(ex.getErrorCode().getMessageKey());
+        String messageKey = ex.getErrorCode().getMessageKey();
+        String message = MessageSourceHolder.getMessage(messageKey);
         log.warn("BizException业务异常[{}][{}]: {}", ex.getErrorCode().getCode(), ex.getErrorCode().getMessageKey(), message);
         return Result.fail(ex.getErrorCode().getCode(), message);
     }

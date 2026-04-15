@@ -18,6 +18,7 @@
     </properties>
 
     <dependencies>
+
         <dependency>
             <groupId>io.ark</groupId>
             <artifactId>ark-domain</artifactId>

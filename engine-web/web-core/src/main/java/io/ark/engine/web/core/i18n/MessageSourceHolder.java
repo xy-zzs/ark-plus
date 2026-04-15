@@ -1,4 +1,4 @@
-package io.ark.engine.core.i18n;
+package io.ark.engine.web.core.i18n;
 
 import io.ark.framework.i18n.MessageResolver;
 import org.springframework.context.MessageSource;
@@ -48,9 +48,11 @@ public class MessageSourceHolder {
      * 指定 Locale 解析
      */
     public static String getMessage(String key, Object[] args, Locale locale) {
+        System.out.println("messageSource:"+key);
         if (messageSource == null) {
             return key;
         }
-        return messageSource.getMessage(key, args, key, locale);
+        String message = messageSource.getMessage(key, args, key, locale);
+        return message;
     }
 }
