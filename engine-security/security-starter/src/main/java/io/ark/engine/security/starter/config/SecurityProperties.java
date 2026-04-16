@@ -19,10 +19,6 @@ public class SecurityProperties {
     private JwtProperties jwt =  new JwtProperties();
 
     private List<String> ignoreUrls = new ArrayList<>(List.of(
-            "/auth/v1/login",
-            "/actuator/**",
-            "/v3/api-docs/**",
-            "/swagger-ui/**",
-            "/swagger-ui.html"
+            "/auth/v1/login"
     ));
 }

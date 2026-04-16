@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
-import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.web.servlet.LocaleResolver;
 
 import java.nio.charset.StandardCharsets;
@@ -30,11 +30,11 @@ public class WebAutoConfiguration {
      */
     @Bean
     public MessageSource messageSource() {
-        ResourceBundleMessageSource source = new ResourceBundleMessageSource();
+        ReloadableResourceBundleMessageSource source = new ReloadableResourceBundleMessageSource();
         source.setBasenames(
-                "i18n/messages",
-                "i18n/auth/messages",
-                "i18n/user/messages"
+                "classpath:i18n/messages",
+                "classpath:i18n/auth/messages",
+                "classpath:i18n/user/messages"
         );
         source.setDefaultEncoding(StandardCharsets.UTF_8.name());
         // key 不存在时返回 key 本身，避免 NoSuchMessageException
@@ -63,6 +63,21 @@ public class WebAutoConfiguration {
         return new ArkLocaleResolver();
     }
     //------
+    /**
+     * MessageSource：扫描所有模块的 i18n/messages 文件
+     * 启动模块放 messages.properties，各业务模块也可放自己的消息文件，
+     * 通过 addBasenames 叠加，互不覆盖
+     */
+    /*@Bean
+    public MessageSource messageSource() {
+        ResourceBundleMessageSource source = new ResourceBundleMessageSource();
+        source.addBasenames("i18n/messages");   // 对应 resources/i18n/messages*.properties
+        source.setDefaultEncoding("UTF-8");
+        source.setUseCodeAsDefaultMessage(true); // key 找不到时返回 key 本身，不抛异常
+        // 注入静态持有器，供非 Bean 场景使用
+        MessageSourceHolder.setMessageSource(source);
+        return source;
+    }*/
 
     /**
      * LocaleResolver：从 Accept-Language 请求头解析 locale
