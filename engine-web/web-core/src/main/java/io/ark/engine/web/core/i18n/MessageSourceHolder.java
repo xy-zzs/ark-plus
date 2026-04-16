@@ -52,7 +52,6 @@ public class MessageSourceHolder {
         if (messageSource == null) {
             return key;
         }
-        String message = messageSource.getMessage(key, args, key, locale);
-        return message;
+        return messageSource.getMessage(key, args, key, locale);
     }
 }

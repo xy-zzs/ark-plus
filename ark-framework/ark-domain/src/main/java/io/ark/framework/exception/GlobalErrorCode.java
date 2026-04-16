@@ -1,5 +1,7 @@
 package io.ark.framework.exception;
 
+import io.ark.framework.result.CodeSupport;
+
 /**
  * @Description: 框架级全局错误码
  *
@@ -17,8 +19,6 @@ package io.ark.framework.exception;
  * @Author: Noah Zhou
  */
 public enum GlobalErrorCode implements IErrorCode{
-    // ─── 成功 ──────────────────────────────────────────────────────────────
-    SUCCESS(200,             "global.success"),
 
     // ─── 客户端错误 4xx ────────────────────────────────────────────────────
     BAD_REQUEST(400,         "global.bad.request"),
@@ -33,17 +33,16 @@ public enum GlobalErrorCode implements IErrorCode{
     // ─── 服务端错误 5xx ────────────────────────────────────────────────────
     INTERNAL_ERROR(500,      "global.internal.error");
 
-    private final int code;
-    private final String messageKey;
+
+    private final CodeSupport support;
 
     GlobalErrorCode(int code, String messageKey) {
-        this.code = code;
-        this.messageKey = messageKey;
+        this.support = new CodeSupport(code, messageKey);
     }
 
     @Override
-    public int getCode() {return code;}
+    public int getCode() {return support.getCode();}
 
     @Override
-    public String getMessageKey() {return messageKey;}
+    public String getMessageKey() {return support.getMessageKey();}
 }

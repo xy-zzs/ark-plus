@@ -56,8 +56,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(BizException.class)
     public Result<Void> handleArkException(BizException ex) {
         // 翻译：用异常携带的 key + args，结合当前请求 locale
-        String messageKey = ex.getErrorCode().getMessageKey();
-        String message = MessageSourceHolder.getMessage(messageKey);
+        String message = MessageSourceHolder.getMessage(ex.getErrorCode().getMessageKey());
         log.warn("BizException业务异常[{}][{}]: {}", ex.getErrorCode().getCode(), ex.getErrorCode().getMessageKey(), message);
         return Result.fail(ex.getErrorCode().getCode(), message);
     }
