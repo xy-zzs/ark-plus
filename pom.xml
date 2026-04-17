@@ -85,7 +85,7 @@
           </dependencies>
           <configuration>
             <skip>${checkstyle.skip}</skip>
-            <configLocation>https://gitee.com/zzsvip/ark-engine/raw/master/ark-checkstyle.xml</configLocation>
+            <configLocation>.checkstyle/checkstyle.xml</configLocation>
             <encoding>UTF-8</encoding>
             <failOnViolation>true</failOnViolation>
             <consoleOutput>true</consoleOutput>

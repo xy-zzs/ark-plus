@@ -4,8 +4,8 @@
     "https://checkstyle.org/dtds/configuration_1_3.dtd">
 
 <!--
-  ark-checkstyle.xml — MVP 版
-  位置: ark-engine/ark-style/src/main/resources/checkstyle/ark-checkstyle.xml
+  checkstyle.xml — MVP 版
+  位置: ark-engine/ark-style/src/main/resources/checkstyle/checkstyle.xml
   原则: 只放"格式化工具救不了、但危害明确"的规则，存量代码尽量不爆红
 -->
 <module name="Checker">
