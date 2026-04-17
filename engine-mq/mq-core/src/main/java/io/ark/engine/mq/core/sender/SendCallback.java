@@ -5,6 +5,7 @@ package io.ark.engine.mq.core.sender;
  * @description:
  */
 public interface SendCallback {
-    void onSuccess(String messageId);
-    void onException(String messageId, Throwable cause);
+  void onSuccess(String messageId);
+
+  void onException(String messageId, Throwable cause);
 }

@@ -8,14 +8,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.kafka.core.KafkaTemplate;
 
 /**
- * @Description:
- * @Author: Noah Zhou
+ * @Description: @Author: Noah Zhou
  */
 @AutoConfiguration
 public class MQAutoConfiguration {
 
-    @Bean
-    public MessageSender messageSender(KafkaTemplate  template, ObjectMapper objectMapper) {
-        return new KafkaSender(template, objectMapper);
-    }
+  @Bean
+  public MessageSender messageSender(KafkaTemplate template, ObjectMapper objectMapper) {
+    return new KafkaSender(template, objectMapper);
+  }
 }

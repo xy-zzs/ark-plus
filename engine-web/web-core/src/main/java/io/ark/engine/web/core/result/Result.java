@@ -6,9 +6,10 @@ import io.ark.framework.exception.IErrorCode;
 import lombok.Getter;
 
 /**
- * @Description:  统一响应体
+ * @Description: 统一响应体
  *
  * <p>所有接口返回此结构：
+ *
  * <pre>
  * {
  *   "code": 200,
@@ -16,43 +17,43 @@ import lombok.Getter;
  *   "data": { ... }
  * }
  * </pre>
+ *
  * @Author: Noah Zhou
  */
 @Getter
 public class Result<T> {
-    private int code;
-    private String message;
-    private T data;
+  private int code;
+  private String message;
+  private T data;
 
-    private Result(int code, String message, T data) {
-        this.code = code;
-        this.message = message;
-        this.data = data;
-    }
+  private Result(int code, String message, T data) {
+    this.code = code;
+    this.message = message;
+    this.data = data;
+  }
 
-    // ─── 成功 ──────────────────────────────────────────────────────────────
+  // ─── 成功 ──────────────────────────────────────────────────────────────
 
-    public static <T> Result<T> ok(T data) {
-        String message1 = MessageSourceHolder.getMessage(WebErrorCode.SUCCESS.getMessageKey());
-        return new Result<>(WebErrorCode.SUCCESS.getCode(),message1, data);
-    }
+  public static <T> Result<T> ok(T data) {
+    String message1 = MessageSourceHolder.getMessage(WebErrorCode.SUCCESS.getMessageKey());
+    return new Result<>(WebErrorCode.SUCCESS.getCode(), message1, data);
+  }
 
-    public static Result<Void> ok() {
-        return new Result<>(WebErrorCode.SUCCESS.getCode(),
-                WebErrorCode.SUCCESS.getMessageKey(), null);
-    }
+  public static Result<Void> ok() {
+    return new Result<>(WebErrorCode.SUCCESS.getCode(), WebErrorCode.SUCCESS.getMessageKey(), null);
+  }
 
-    // ─── 失败 ──────────────────────────────────────────────────────────────
+  // ─── 失败 ──────────────────────────────────────────────────────────────
 
-    public static <T> Result<T> fail(IErrorCode errorCode) {
-        return new Result<>(errorCode.getCode(), errorCode.getMessageKey(), null);
-    }
+  public static <T> Result<T> fail(IErrorCode errorCode) {
+    return new Result<>(errorCode.getCode(), errorCode.getMessageKey(), null);
+  }
 
-    public static <T> Result<T> fail(int code, String message) {
-        return new Result<>(code, message, null);
-    }
+  public static <T> Result<T> fail(int code, String message) {
+    return new Result<>(code, message, null);
+  }
 
-    public boolean isSuccess() {
-        return this.code == WebErrorCode.SUCCESS.getCode();
-    }
+  public boolean isSuccess() {
+    return this.code == WebErrorCode.SUCCESS.getCode();
+  }
 }
