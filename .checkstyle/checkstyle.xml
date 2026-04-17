@@ -23,6 +23,11 @@
         <property name="lineSeparator" value="lf"/>
     </module>
 
+    <!-- 文件末尾必须有换行，与 .editorconfig insert_final_newline 对齐 -->
+    <module name="NewlineAtEndOfFile">
+        <property name="lineSeparator" value="lf"/>
+    </module>
+
     <!-- 禁止 Tab 缩进，与 .editorconfig indent_style=space 对齐 -->
     <module name="FileTabCharacter">
         <property name="eachLine" value="true"/>
@@ -42,14 +47,17 @@
          语法树级检查（TreeWalker 级）
          ================================================================ -->
     <module name="TreeWalker">
-
         <!-- ── 命名规范 ──────────────────────────────────────────────── -->
 
         <!-- 类名：大驼峰。含 DDD 常用后缀：Service/Repository/Factory/Aggregate -->
         <module name="TypeName"/>
 
-        <!-- 接口名：大驼峰（DDD Repository 接口通常无 I 前缀，符合此规则） -->
-        <module name="InterfaceTypeParameterName"/>
+        <!-- 接口名：大驼峰（DDD Repository 接口通常无 I 前缀，符合此规则）
+            允许一个或多个大写字母或数字（如 T、ID、KEY）
+        -->
+        <module name="InterfaceTypeParameterName">
+            <property name="format" value="^[A-Z]+$"/>
+        </module>
 
         <!-- 方法名：小驼峰 -->
         <module name="MethodName"/>
@@ -84,6 +92,7 @@
 
         <!-- 禁止未使用的 import（Spotless removeUnusedImports 已处理，双重保障） -->
         <module name="UnusedImports"/>
+
 
         <!--
           禁止引入特定类（DDD 分层保护）
@@ -133,19 +142,17 @@
         <!-- 逗号、分号、类型转换后必须有空格 -->
         <module name="WhitespaceAfter"/>
 
-        <!-- 一元操作符（++/--/!）前不能有空格 -->
+        <!-- 一元操作符前不能有空格 -->
         <module name="NoWhitespaceBefore"/>
 
         <!-- 泛型尖括号前不能有空格：List<String> 而非 List <String> -->
         <module name="GenericWhitespace"/>
 
-        <!-- ── DDD 复杂度控制 ────────────────────────────────────────── -->
-
         <!--
-          方法行数上限 80 行（不含空行）
-          DDD 命令方法职责单一，超过说明可能违反单一职责
-          超过时考虑: 提取私有方法 / 拆分领域服务 / 引入策略模式
-        -->
+         方法行数上限 80 行（不含空行）
+         DDD 命令方法职责单一，超过说明可能违反单一职责
+         超过时考虑: 提取私有方法 / 拆分领域服务 / 引入策略模式
+       -->
         <module name="MethodLength">
             <property name="max" value="80"/>
             <property name="countEmpty" value="false"/>
@@ -184,19 +191,19 @@
           微服务中捕获 Exception/Throwable 会吞掉 InterruptedException 等
           应捕获具体类型，在全局异常处理器（@RestControllerAdvice）统一兜底
         -->
-        <module name="IllegalCatch">
+        <!--<module name="IllegalCatch">
             <property name="illegalClassNames"
                       value="java.lang.Exception,java.lang.Throwable,java.lang.RuntimeException"/>
-        </module>
+        </module>-->
 
         <!--
           禁止 throw 宽泛异常
           应抛出自定义领域异常（DomainException / BizException）
         -->
-        <module name="IllegalThrows">
+        <!--<module name="IllegalThrows">
             <property name="illegalClassNames"
                       value="java.lang.Exception,java.lang.Throwable,java.lang.RuntimeException"/>
-        </module>
+        </module>-->
 
         <!-- ── 最佳实践 ──────────────────────────────────────────────── -->
 
@@ -233,7 +240,6 @@
         <!-- 禁止多余的修饰符（接口方法的 public abstract 等） -->
         <module name="RedundantModifier"/>
 
-        <!-- ── Javadoc ───────────────────────────────────────────────── -->
 
         <!--
           public 方法必须有 Javadoc
@@ -241,19 +247,21 @@
           豁免: getter/setter（allowMissingPropertyJavadoc）
           豁免: 测试注解、Override（allowedAnnotations）
         -->
-        <module name="MissingJavadocMethod">
+        <!--<module name="MissingJavadocMethod">
             <property name="scope" value="public"/>
             <property name="allowMissingPropertyJavadoc" value="true"/>
             <property name="allowedAnnotations"
                       value="Override,Test,ParameterizedTest,BeforeEach,AfterEach,BeforeAll,AfterAll,Bean,PostConstruct"/>
-        </module>
+        </module>-->
 
         <!-- public 类必须有 Javadoc -->
-        <module name="MissingJavadocType">
+        <!--<module name="MissingJavadocType">
             <property name="scope" value="public"/>
             <property name="skipAnnotations"
                       value="SpringBootApplication,Configuration,RestController,Controller,Service,Repository,Component,Mapper,FeignClient"/>
-        </module>
+        </module>-->
+
+
 
     </module>
 

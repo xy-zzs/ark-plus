@@ -36,6 +36,6 @@ public class IdempotentInterceptor implements ConsumeInterceptor {
 
   @Override
   public int order() {
-    return -100;
+    return Integer.MIN_VALUE;
   } // 最先执行
 }

@@ -5,6 +5,7 @@ import io.ark.engine.web.core.exception.WebErrorCode;
 import io.ark.engine.web.core.i18n.MessageSourceHolder;
 import io.ark.engine.web.core.result.Result;
 import io.ark.framework.exception.BizException;
+import io.ark.framework.exception.GlobalErrorCode;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -74,7 +75,7 @@ public class GlobalExceptionHandler {
   public Result<Void> handleArkException(WebArkException ex) {
     // 翻译：用异常携带的 key + args，结合当前请求 locale
     String message = MessageSourceHolder.getMessage(ex.getMessageKey(), ex.getArgs());
-    if (ex.getCode() >= 500) {
+    if (ex.getCode() >= GlobalErrorCode.INTERNAL_ERROR.getCode()) {
       log.error("WebArkException业务异常[{}][{}]: {}", ex.getCode(), ex.getMessageKey(), message, ex);
     } else {
       log.warn("WebArkException业务异常[{}][{}]: {}", ex.getCode(), ex.getMessageKey(), message);

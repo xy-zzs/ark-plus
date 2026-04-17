@@ -21,6 +21,8 @@ import org.springframework.web.filter.OncePerRequestFilter;
  */
 @RequiredArgsConstructor
 public class TokenAuthFilter extends OncePerRequestFilter {
+
+  public static final int FREFIX_BEARER = 7;
   private final JwtProvider jwtProvider;
 
   @Override
@@ -56,7 +58,7 @@ public class TokenAuthFilter extends OncePerRequestFilter {
       return null;
     }
     if (StringUtils.hasText(authorization) && authorization.startsWith("Bearer ")) {
-      return authorization.substring(7);
+      return authorization.substring(FREFIX_BEARER);
     }
     System.out.println("Token格式错误");
     return null;

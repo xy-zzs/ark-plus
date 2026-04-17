@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.ark.engine.data.core.page.PageQuery;
 import io.ark.engine.data.core.page.PageResult;
-import io.ark.engine.data.core.repository.IRepository;
+import io.ark.engine.data.core.repository.Repository;
 import io.ark.engine.data.mp.page.MpPageHelper;
 import java.io.Serializable;
 import java.util.List;
@@ -34,7 +34,7 @@ import java.util.Optional;
  * @author Noah Zhou
  */
 public abstract class MpRepository<M extends BaseMapper<T>, T, ID extends Serializable>
-    extends ServiceImpl<M, T> implements IRepository<T, ID> {
+    extends ServiceImpl<M, T> implements Repository<T, ID> {
   // ─── IRepository 标准实现 ─────────────────────────────────────────────────
 
   @Override

@@ -9,7 +9,7 @@ import java.util.Optional;
  * @author Noah Zhou
  * @description:
  */
-public interface IRepository<T, ID> {
+public interface Repository<T, ID> {
 
   Optional<T> findById(ID id);
 
