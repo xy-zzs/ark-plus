@@ -18,7 +18,6 @@
     <module>engine-core</module>
     <module>engine-cache</module>
     <module>engine-mq</module>
-    <module>ark-style</module>
   </modules>
 
   <properties>
@@ -83,18 +82,10 @@
               <artifactId>checkstyle</artifactId>
               <version>10.14.2</version>
             </dependency>
-            <!-- ark-style.jar 提供 checkstyle/ark-checkstyle.xml -->
-            <dependency>
-              <groupId>io.ark</groupId>
-              <artifactId>ark-style</artifactId>
-              <version>${revision}</version>
-            </dependency>
           </dependencies>
           <configuration>
             <skip>${checkstyle.skip}</skip>
-            <!-- classpath 引用，从 ark-style.jar 内部读取，无路径依赖 -->
-            <configLocation>checkstyle/ark-checkstyle.xml</configLocation>
-            <!--            <configLocation>ark-checkstyle.xml</configLocation>-->
+            <configLocation>https://gitee.com/zzsvip/ark-engine/raw/master/ark-checkstyle.xml</configLocation>
             <encoding>UTF-8</encoding>
             <failOnViolation>true</failOnViolation>
             <consoleOutput>true</consoleOutput>
