@@ -1,0 +1,49 @@
+
+root = true
+
+# ── 全局默认 ──────────────────────────────────────────────────
+[*]
+charset                  = utf-8
+end_of_line              = lf
+insert_final_newline     = true
+trim_trailing_whitespace = true
+
+# ── Java 源码（与 google-java-format GOOGLE 风格对齐） ──────
+[*.java]
+indent_style = space
+indent_size  = 2
+
+# ── XML（Maven POM、Spring 配置） ───────────────────────────
+[*.xml]
+indent_style = space
+indent_size  = 4
+
+# ── YAML（Spring Boot application.yml、CI 配置） ────────────
+[*.{yml,yaml}]
+indent_style = space
+indent_size  = 2
+
+# ── Properties（Spring Boot application.properties） ────────
+[*.properties]
+indent_style = space
+indent_size  = 4
+
+# ── SQL（Flyway 迁移脚本） ──────────────────────────────────
+[*.sql]
+indent_style = space
+indent_size  = 4
+
+# ── Markdown 文档 ───────────────────────────────────────────
+[*.md]
+trim_trailing_whitespace = false
+indent_style             = space
+indent_size              = 2
+
+# ── Shell 脚本 ──────────────────────────────────────────────
+[*.sh]
+indent_style = space
+indent_size  = 2
+
+# ── Makefile（必须 Tab） ─────────────────────────────────────
+[Makefile]
+indent_style = tab
