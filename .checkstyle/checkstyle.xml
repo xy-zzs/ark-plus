@@ -23,10 +23,6 @@
         <property name="lineSeparator" value="lf"/>
     </module>
 
-    <!-- 文件末尾必须有换行，与 .editorconfig insert_final_newline 对齐 -->
-    <module name="NewlineAtEndOfFile">
-        <property name="lineSeparator" value="lf"/>
-    </module>
 
     <!-- 禁止 Tab 缩进，与 .editorconfig indent_style=space 对齐 -->
     <module name="FileTabCharacter">
