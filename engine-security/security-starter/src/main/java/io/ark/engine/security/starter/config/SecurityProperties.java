@@ -15,5 +15,11 @@ import org.springframework.boot.context.properties.NestedConfigurationProperty;
 public class SecurityProperties {
   @NestedConfigurationProperty private JwtProperties jwt = new JwtProperties();
 
-  private List<String> ignoreUrls = new ArrayList<>(List.of("/auth/v1/login"));
+  private List<String> ignoreUrls =
+      new ArrayList<>(
+          List.of(
+              "/auth/v1/login", // 登录
+              "/v3/api-docs/**",
+              "/swagger-ui/**",
+              "/swagger-ui.html"));
 }
