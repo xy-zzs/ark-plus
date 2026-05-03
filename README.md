@@ -101,15 +101,6 @@ private MqProducer mqProducer;
 mqProducer.send("topic-name", event);
 ```
 
-### 部署模式切换（engine-core）
-
-支持通过配置在单体模式和分布式模式之间切换，无需修改业务代码：
-
-```yaml
-ark:
-  deployment:
-    mode: distributed   # monocoque（单体）| distributed（微服务）
-```
 
 ---
 
